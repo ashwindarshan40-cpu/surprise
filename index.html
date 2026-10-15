@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dude 💖</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:#fff5fa;color:#25233a}
+input{width:100%;padding:15px;border:2px solid #ffd0e2;border-radius:14px;font-size:18px;text-align:center;outline:none;margin:10px 0}
+button{border:0;border-radius:999px;padding:14px 25px;background:#ff5f9e;color:#fff;font-size:16px;font-weight:800;cursor:pointer}
+#site{display:block}header{background:#171d2e;color:#fff;padding:15px 20px;text-align:center;font-weight:800}
+.hero{min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 20px;background:linear-gradient(135deg,#171d2e,#49355e,#ff78ad);color:#fff;position:relative;overflow:hidden}
+.hero h1{font-size:clamp(44px,12vw,88px);color:#ffe58a;margin:8px 0;text-shadow:0 5px #19182b}.hero h2{font-size:clamp(25px,7vw,45px);margin:8px}.cake{font-size:100px;animation:float 2.5s infinite}
+section{max-width:950px;margin:auto;padding:55px 20px}.card{background:#fff;padding:28px;border-radius:28px;box-shadow:0 15px 45px #5c426120;margin-bottom:25px}
+h3{text-align:center;font-size:30px}.letter{font-size:18px;line-height:1.8}.wishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}.wish{padding:20px;border-radius:20px;text-align:center;font-weight:800;background:#ffe0ec}
+audio{width:100%;max-width:550px}footer{background:#171d2e;color:#fff;text-align:center;padding:45px}
+#wrong{animation:shake .25s}.hide{display:none}
+@keyframes float{50%{transform:translateY(-14px)}}@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+</style>
+</head>
+<body>
+
+<div id="site">
+<header>💗 A Birthday Surprise for Dude</header>
+
+<div class="hero">
+ <div>
+  <div class="cake">🎂</div>
+  <div>Heyyy, Dude! 🥳</div>
+  <h1>Happiest B'day</h1>
+  <h2>dear Dude 💖</h2>
+  <p>A special birthday wish for my best friend ✨</p>
+  <button onclick="playSong()">🎵 Play Your Birthday Song</button>
+ </div>
+</div>
+
+<section>
+ <div class="card">
+  <h3>💌 A Little Birthday Note</h3>
+  <div class="letter">
+   Dear Dude ❤️<br><br>
+   Happiest B'day dear! 🥳 You are not just a friend, you're one of those
+   people who make ordinary days feel special. Thank you for all the laughs,
+   crazy moments, support and memories. 🫶<br><br>
+   Keep smiling, keep shining and keep being the amazing person you are.
+   May this year bring you lots of happiness, success and beautiful memories. ✨<br><br>
+   <b>Stay happy. Stay you. Always. 💗</b>
+  </div>
+ </div>
+
+ <div class="card" style="text-align:center">
+  <h3>🎵 A Song For You</h3>
+  <audio id="song" controls preload="auto"> >
+   <source src="ab.mp3" type="audio/mp3"/>
+  </audio>
+  <p id="audioStatus">Tap ▶️ to play the birthday song.</p>
+ </div>
+
+ <div class="card">
+  <h3>✨ Just For You</h3>
+  <div class="wishes">
+   <div class="wish">😊 Be Happy Always</div><div class="wish">⭐ Achieve Your Dreams</div>
+   <div class="wish">💙 You Are Special</div><div class="wish">👑 Stay Bold</div>
+   <div class="wish">🌱 Keep Growing</div><div class="wish">☀️ Best Is Yet To Come</div>
+  </div>
+ </div>
+</section>
+
+<footer>Life is better with friends like you 💕<br><br>Stay Happy ♥ Stay You ♥ Always</footer>
+</div>
+
+<script>
+function playSong(){
+ const song=document.getElementById("song");
+ const status=document.getElementById("audioStatus");
+ song.load();
+ song.play().then(()=>{
+  status.textContent="🎵 Now playing your birthday song! 💖";
+ }).catch((err)=>{
+  console.error("Audio playback failed:",err);
+  status.textContent="⚠️ Audio not found. Put 'ab.mp3' in the same folder as this HTML file.";
+ });
+}
+document.getElementById("song").addEventListener("error",()=>{
+ document.getElementById("audioStatus").textContent="⚠️ Could not load ab.mp3. Make sure the MP3 is in the same folder as index.html.";
+});
+function burst(){
+ for(let i=0;i<45;i++){
+  const e=document.createElement("span");e.textContent=["🎉","💖","✨","🎈","💕"][Math.floor(Math.random()*5)];
+  e.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-30px;font-size:${18+Math.random()*20}px;z-index:10000;transition:transform 2.5s linear,opacity 2.5s`;
+  document.body.appendChild(e);
+  requestAnimationFrame(()=>{e.style.transform=`translate(${(Math.random()-.5)*180}px,${innerHeight+80}px) rotate(${Math.random()*720}deg)`;e.style.opacity=0});
+  setTimeout(()=>e.remove(),2700);
+ }
+}
+burst();
+</script>
+</body>
+</html>
